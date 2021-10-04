@@ -51,7 +51,10 @@ When ZTP runs, option 67 will be used to download and execute ztp.py When AutoIn
 ## Deployment
 When an XE device boots and there is no config and when DHCP provides option 67 with this python file from repo,It will be automatically downloaded to device and gets executed
  
-### What the Script Does ? 
+### What the python script (from this repo) do? 
+Gets downloaded automaticaly to the device
+
+Start execution in the guset shell
 
 Logs ZTP process to persistent storage on the device flash for failure analysis
 
