@@ -18,7 +18,6 @@ All Cisco IOS-XE (and Cisco IOS) based devices try to automatically download a c
 
 When a device that supports python Zero-Touch Provisioning boots up, and does not find the startup configuration (during fresh install on Day Zero), the device enters the Zero-Touch Provisioning mode. The device locates a Dynamic Host Control Protocol (DHCP) server, bootstraps itself with its interface IP address, gateway, and Domain Name System (DNS) server IP address, and enables Guest Shell. The device then obtains the IP address or URL of a TFTP server, and downloads the Python script to configure the device. Guest Shell provides the environment for the Python script to run. Guest Shell executes the downloaded Python script and configures the device for Day Zero. After Day Zero provisioning is complete, Guest Shell remains enabled.
 
-
 3. Hybrid(Autoinstall+Python)
 
 On devices that support python ZTP and AutoInstall we can enable hybrid mode. Python based ZTP will always takes priority and will trigger a python script as in option 2 above and if that fails it will fallback to AutoInstall for generic configuration(cisconet.cfg) to establish remote connectivity. 
