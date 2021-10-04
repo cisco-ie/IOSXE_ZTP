@@ -20,7 +20,7 @@ When a device that supports python Zero-Touch Provisioning boots up, and does no
 
 3. Hybrid(Autoinstall+Python)
 
-On devices that support python ZTP and AutoInstall we can enable hybrid mode. Python based ZTP will always takes priority and will trigger a python script as in option 2 above and if that fails it will fallback to AutoInstall for generic configuration(cisconet.cfg) to establish remote connectivity. 
+On devices that support python ZTP and AutoInstall we can enable hybrid mode. Python based ZTP will always takes priority and will trigger a python script as in option 2 above and if that fails it will fallback to AutoInstall for generic configuration. This generic configuartion file must have have a hardcode name  as cisconet.cfg to be picked up by the device. 
 
 DHCP Server Configuration for Python + AutoInstall
 
