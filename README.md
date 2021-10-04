@@ -97,23 +97,11 @@ Chitransh Pratyush (cpratyus) <cpratyus@cisco.com>
 Log Files from running this Python Script are enabled by default , Logging can be disabled by setting the flag log_tofile = False in the script
 On IOS XE 17.2.x and above log files are stored at '/flash/guest-share/ztp.log'. In all other version logs will be located at '/flash/ztp.log'
 
-
-## Contributing
-
-TBD
-
-
 ## Authors
 
 Arun Kumar Sakthivel (arsakthi@cisco.com)
 
-
 ## License
 
 This project is covered under the terms described in [LICENSE](./LICENSE)
-
-## Acknowledgments
-
-
-
 
