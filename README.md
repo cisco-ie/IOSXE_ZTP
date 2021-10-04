@@ -49,7 +49,7 @@ When ZTP runs, option 67 will be used to download and execute ztp.py When AutoIn
 
 
 ## Deployment
-When an XE device boots and there is no config and when DHCP provides option 67 with this python file from repo(any ztp python file) will be automatically downloaded to device and gets executed
+When an XE device boots and there is no config and when DHCP provides option 67 with this python file from repo,It will be automatically downloaded to device and gets executed
  
 ### What the Script Does ? 
 
