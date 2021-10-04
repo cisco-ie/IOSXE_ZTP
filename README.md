@@ -43,7 +43,7 @@ When ZTP runs, option 67 will be used to download and execute ztp.py When AutoIn
 |ASR 1000 Modular	   |  16.8.2	                     |   Varies (3.x)
 |Catalyst 8000	      |  17.3.2	                     |   17.3.2
 
-2. HTTP-based download of ZTP Python script download available as of 16.8.1
+2. HTTP-based download of ZTP Python script available as of 16.8.1
 3. ZTP not supported in IOS XE 16.12.4 due to defect
 4. ZTP solution requires a DHCP server, which will inform the network device about where to find python file/configuration/softwareimage etc to download. This can be a location on the same network and can be on a TFTP or HTTP server.
 
