@@ -45,13 +45,12 @@ When ZTP runs, option 67 will be used to download and execute ztp.py When AutoIn
 
 2. HTTP-based download of ZTP Python script download available as of 16.8.1
 3. ZTP not supported in IOS XE 16.12.4 due to defect
+4. ZTP solution requires a DHCP server, which will inform the network device about where to find python file/configuration/softwareimage etc to download. This can be a location on the same network and can be on a TFTP or HTTP server.
 
 
 ## Deployment
- You can download the python file directly from the repo and use the same
-
-When an XE device boots and there is no config and when DHCP provides option 67 with this python file(any ztp python file) will be automatically downloaded to device and gets executed
-
+When an XE device boots and there is no config and when DHCP provides option 67 with this python file from repo(any ztp python file) will be automatically downloaded to device and gets executed
+ 
 ### What the Script Does ? 
 
 Logs ZTP process to persistent storage on the device flash for failure analysis
