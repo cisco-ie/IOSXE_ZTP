@@ -162,4 +162,4 @@ This project is covered under the terms described in [LICENSE](./LICENSE)
 
 ## Acknowledgment 
 
-Jeremy Cohoe (jcohoe) <jcohoe@cisco.com>
+A big shoutout to Jeremy Cohoe (jcohoe) <jcohoe@cisco.com> in supporting us on this project
