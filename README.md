@@ -54,8 +54,8 @@ When an XE device boots and there is no config and when DHCP provides option 67 
 ### DHCP Server
 A DHCP server is required for ZTP, as this is how the device learns about where to find the Python configuration file from. In oue case, the DHCP server is the open source ISC DHCPd and the configuration file is at /etc/dhcp/dhcpd.conf in a Linux developer box. The option bootfile-name is also known as option 67 and it specifies the python file ztp.py
 
-below is a sample dhcpd.conf form our setup and someuseful commands for ISC DHCP server for your use . 
-
+below is a sample dhcpd.conf and someuseful commands for ISC DHCP server for your use. 
+    
     option domain-name "lab_name";
     default-lease-time 600;
     max-lease-time 7200;
