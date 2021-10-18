@@ -54,12 +54,38 @@ When an XE device boots and there is no config and when DHCP provides option 67 
 ### DHCP Server
 A DHCP server is required for ZTP, as this is how the device learns about where to find the Python configuration file from. In oue case, the DHCP server is the open source ISC DHCPd and the configuration file is at /etc/dhcp/dhcpd.conf in a Linux developer box. The option bootfile-name is also known as option 67 and it specifies the python file ztp.py
 
-below is some of the useful commands for ISC DHCP server. 
+below is a sample dhcpd.conf form our setup and someuseful commands for ISC DHCP server for your use . 
 
+    option domain-name "lab_name";
+    default-lease-time 600;
+    max-lease-time 7200;
+    ddns-update-style none;
+    authoritative;
+    subnet x.x.x.x netmask x.x.x.x {
+    range 10.1.1.150 10.1.1.159;
+    option domain-name "";
+    option domain-name-servers x.x.x.x;
+    option subnet-mask x.x.x.x;
+    option broadcast-address 1x.x.x.x;
+    option routers x.x.x.x;
+    option ntp-servers x.x.x.x;
+    default-lease-time 600000;
+    max-lease-time 720000;
+
+    class "C9300-24T" { match if substring (option vendor-class-identifier,0,15) = "\tC9300-24T"; }
+    
+      pool {
+        allow members of "C9300-24T";
+        deny members of "ciscopnp";
+        range x.x.x.x x.x.x.x;
+        option bootfile-name "http://x.x.x.x/ztp.py";
+      }
+
+#### Useful DHCP commands 
 cat /etc/dhcp/dhcpd.conf | grep bootfile-name
 
 Example for DHCP Option 67 bootfile-name with HTTP:
-option bootfile-name "http://192.168.69.1/ztp.py";
+option bootfile-name "http://x.x.x.x/ztp.py";
 
 ps xa |grep dhcpd
 
