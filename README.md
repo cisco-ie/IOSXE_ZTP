@@ -12,7 +12,7 @@ On IOS XE ZTP is supported in following ways,
 
  1. AutoInstall 
  
-All Cisco IOS-XE (and Cisco IOS) based devices try to automatically download a configuration file during the first boot.  This is called as Autoinstall. when a IOS device boots, the AutoInstall process tries to download a the configuration via TFTP.  If a custom TFTP server is used, the configuration provided to the device can be built with information gathered from DHCP Server .
+All Cisco IOS-XE (and Cisco IOS) based devices try to automatically download a configuration file during the first boot.  This is called as Autoinstall. when a IOS device boots, the AutoInstall process tries to download the configuration via TFTP.  If a custom TFTP server is used, the configuration provided to the device can be built with information gathered from DHCP Server.
 
 2. Python based
 
@@ -20,7 +20,7 @@ When a device that supports python Zero-Touch Provisioning boots up, and does no
 
 3. Hybrid(Autoinstall+Python)
 
-On devices that support python ZTP and AutoInstall we can enable hybrid mode. Python based ZTP will always takes priority and will trigger a python script as in option 2 above and if that fails it will fallback to AutoInstall for generic configuration. This generic configuartion file must have have a hardcode name as cisconet.cfg and placed only in tftp server to be picked up by the device. 
+On devices that support python ZTP and AutoInstall we can enable hybrid mode. Python based ZTP will always takes priority and will trigger a python script as in option 2 above and if that fails it will fall back to AutoInstall for generic configuration. This generic configuration file must have a hardcode name as cisconet.cfg and placed only in tftp server to be picked up by the device. 
 
 DHCP Server Configuration for Python + AutoInstall
 
@@ -45,16 +45,42 @@ When ZTP runs, option 67 will be used to download and execute ztp.py When AutoIn
 
 2. HTTP-based download of ZTP Python script available as of 16.8.1
 3. ZTP not supported in IOS XE 16.12.4 due to defect
-4. ZTP solution requires a DHCP server, which will inform the network device about where to find python file/configuration/softwareimage etc to download. This can be a location on the network and can be on a TFTP or HTTP server.
+4. ZTP solution requires a DHCP server, which will inform the network device about where to find python file/configuration/software image etc to download. This can be a location on the network and can be on a TFTP or HTTP server.
 
 
 ## Deployment
-When an XE device boots and there is no config and when DHCP provides option 67 with this python file from repo,It will be automatically downloaded to device and gets executed
- 
-### What the python script (from this repo) do? 
-Gets downloaded automaticaly to the device
+When an XE device boots and there is no config and when DHCP provides option 67 with this python file from repo, It will be automatically downloaded to device and gets executed
 
-Start execution in the guset shell
+### DHCP Server
+A DHCP server is required for ZTP, as this is how the device learns about where to find the Python configuration file from. In oue case, the DHCP server is the open source ISC DHCPd and the configuration file is at /etc/dhcp/dhcpd.conf in a Linux developer box. The option bootfile-name is also known as option 67 and it specifies the python file ztp.py
+
+below is some of the useful commands for ISC DHCP server. 
+
+cat /etc/dhcp/dhcpd.conf | grep bootfile-name
+
+Example for DHCP Option 67 bootfile-name with HTTP:
+option bootfile-name "http://192.168.69.1/ztp.py";
+
+ps xa |grep dhcpd
+
+tail -F /var/log/dhcpd.log &
+
+In our case the Python file for ZTP is called ztp.py and is hosted at the webserver root directory which is set within the Apache webserver configuration.
+
+### Web Server
+ZTP accesses the python configuration file from HTTP or TFTP. In the example HTTP is used.
+
+Check that the Apache HTTPD server is running with the following commands, this will follow the log file from the webserver so you will see when the file is accessed.
+
+ps xa | grep httpd
+
+tail -F /var/log/httpd/access_log & 
+
+### What the python script (from this repo) do? 
+
+Gets downloaded automatically to the device
+
+Start execution in the guest shell
 
 Logs ZTP process to persistent storage on the device flash for failure analysis
 
@@ -64,7 +90,7 @@ checks if upgrade/downgrade required and takes appropriate action
 
 If upgrade required, transfers image from http server to device flash
 
-Deploys an EEM script to perform upgarde steps and post upgrade(cleanup) steps
+Deploys an EEM script to perform upgrade steps and post upgrade(cleanup) steps
 
 Runs the EEM script 
 
@@ -101,7 +127,13 @@ On IOS XE 17.2.x and above log files are stored at '/flash/guest-share/ztp.log'.
 
 Arun Kumar Sakthivel (arsakthi@cisco.com)
 
+Chitransh Pratyush (cpratyus) <cpratyus@cisco.com>
+
 ## License
 
 This project is covered under the terms described in [LICENSE](./LICENSE)
 
+
+## Acknowledgment 
+
+Jeremy Cohoe (jcohoe) <jcohoe@cisco.com>
