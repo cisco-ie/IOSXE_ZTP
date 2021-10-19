@@ -54,7 +54,7 @@ ZTP solution requires a DHCP server, which will inform the network device about 
 
 
 ## Deployment
-When an XE device boots and there is no config and when DHCP provides option 67 with this python file from repo, It will be automatically downloaded to device and gets executed.
+When an XE device boots and there is no config and when DHCP provides option 67 with this python file from repo, it will be automatically downloaded to device and gets executed.
 
 ### DHCP Server
 A DHCP server is required for ZTP, as this is how the device learns about where to find the Python configuration file from. In our case, the DHCP server is the open source ISC DHCPd and the configuration file is at /etc/dhcp/dhcpd.conf in a Linux developer box. The option bootfile-name is also known as option 67 and it specifies the python file ztp.py
