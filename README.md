@@ -27,9 +27,9 @@ On devices that support python ZTP and AutoInstall we can enable hybrid mode. Py
 
 DHCP Server Configuration for Python + AutoInstall
 
-DHCP Option 67: http://x.x.x.x/ztp.py
+    DHCP Option 67: http://x.x.x.x/ztp.py
  
-DHCP Option 150: tftp-server-ip
+    DHCP Option 150: tftp-server-ip
  
 When ZTP runs, option 67 will be used to download and execute ztp.py. When AutoInstall runs, option 150 will be used to download and apply “cisconet.cfg” from the TFTP server
 
