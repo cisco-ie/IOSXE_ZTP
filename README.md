@@ -126,7 +126,7 @@ Runs the EEM script.
 
 Pushes the entire golden config or a partial config.
 
-Notifies user of success/failure on both CLI prompt/logs.
+Notifies user of success/failure on both CLI prompt and logs.
 
 ## Usage
 
