@@ -166,4 +166,4 @@ This project is covered under the terms described in [LICENSE](./LICENSE)
 
 ## Acknowledgment 
 
-A big shoutout to Jeremy Cohoe (jcohoe) <jcohoe@cisco.com> . His XE ZTP script is a starting point for our codebase. 
+Jeremy Cohoe (jcohoe) <jcohoe@cisco.com> . His XE ZTP script is a starting point for our codebase. 
